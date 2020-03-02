@@ -6,6 +6,7 @@ exports.products_get_all = (req, res, next) => {
     .select("name price _id productImage quantityAvailable")
     .exec()
     .then(docs => {
+        res.setHeader("myName","Lalu");
         const response = {
             count: docs.length,
             products: docs.map(doc => {

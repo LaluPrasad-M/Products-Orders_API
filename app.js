@@ -8,17 +8,14 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user');
 
+
 mongoose.connect(
     process.env.MONGODB_URL
      , { useNewUrlParser: true, useUnifiedTopology: true  }
-     /*, {
-          useMongoClient:true
-     }*/
 );
 mongoose.Promise = global.Promise;
 app.use(morgan('dev'));
 
-app.use('/uploads',express.static('uploads'));
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
@@ -28,10 +25,10 @@ app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.setHeader('Content-Type','application/json');
     res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Headers','*');//'Origin, X-Requested_With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Headers','*');
     if(req.method === 'OPTIONS'){
         res.header('Access-Control-Allow-Methods',
-        'PUT, PATCH, POST, DELETE, GET');
+        'POST, GET');
         return res.status(200).json({});
     }
     next();

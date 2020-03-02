@@ -1,7 +1,0 @@
-{
-    "env":{
-        "MONGODB_URL" : "mongodb+srv://user001:Unknown..@apicluster-csuod.mongodb.net/test?retryWrites=true&w=majority",
-        "JWT_KEY" : "secret",
-        "TOKEN": ""
-    }
-}

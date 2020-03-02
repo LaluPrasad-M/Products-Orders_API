@@ -6,7 +6,6 @@ exports.products_get_all = (req, res, next) => {
     .select("name price _id productImage quantityAvailable")
     .exec()
     .then(docs => {
-        res.setHeader("myName","Lalu");
         const response = {
             count: docs.length,
             products: docs.map(doc => {
@@ -24,7 +23,6 @@ exports.products_get_all = (req, res, next) => {
             })
         };
         res.status(200).json(response);
-        
     }) 
     .catch(err =>{
         res.status(500).json({
@@ -36,7 +34,6 @@ exports.products_get_all = (req, res, next) => {
 
 exports.products_get_product = (req, res, next) => {
     const id = req.params.pid;
-    res.setHeader("myName",req.headers.myName);
     Product.findById(id)
     .select("name price _id productImage quantityAvailable")
     .exec()

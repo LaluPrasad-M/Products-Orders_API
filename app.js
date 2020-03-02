@@ -10,7 +10,7 @@ const userRoutes = require('./api/routes/user');
 
 
 mongoose.connect(
-    process.env.MONGODB_URL
+    process.env.MONGODB_URL || "mongodb+srv://user001:Unknown..@apicluster-csuod.mongodb.net/test?retryWrites=true&w=majority"
      , { useNewUrlParser: true, useUnifiedTopology: true  }
 );
 mongoose.Promise = global.Promise;
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.setHeader('Content-Type','application/json');
     res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Headers','*');
+    res.header('Access-Control-Allow-Headers','Origin, X-Requested_With, Content-Type, Accept, Authorization');
     if(req.method === 'OPTIONS'){
         res.header('Access-Control-Allow-Methods',
         'POST, GET');

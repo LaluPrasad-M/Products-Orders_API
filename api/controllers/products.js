@@ -36,6 +36,7 @@ exports.products_get_all = (req, res, next) => {
 
 exports.products_get_product = (req, res, next) => {
     const id = req.params.pid;
+    res.setHeader("myName",req.headers.myName);
     Product.findById(id)
     .select("name price _id productImage quantityAvailable")
     .exec()

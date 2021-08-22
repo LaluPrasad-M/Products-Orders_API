@@ -17,8 +17,8 @@ exports.orders_get_all = (req, res, next) => {
             orders: docs.map(doc => {
                 return {
                     product: doc.product,
-                    user: doc.userId,
                     quantity: doc.quantity,
+                    user: doc.userId,
                     OrderID: doc._id,
                     request: {
                         type: "GET",
